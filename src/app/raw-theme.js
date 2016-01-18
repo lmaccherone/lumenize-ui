@@ -3,13 +3,12 @@
 // import Spacing from '../spacing';
 // import zIndex from '../zIndex';
 import {Styles, Utils} from 'material-ui';
-const {Colors, Spacing, zIndex} = Styles;
+const {Colors, Spacing} = Styles;
 const {ColorManipulator} = Utils;
 
 export default {
   spacing: Spacing,
   fontFamily: 'Roboto, sans-serif',
-  zIndex: zIndex,
   palette: {
     primary1Color: Colors.deepOrange700,
     primary2Color: Colors.deepOrange700,

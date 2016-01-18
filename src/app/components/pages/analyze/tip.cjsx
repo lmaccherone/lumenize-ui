@@ -11,6 +11,7 @@ superagent = require('superagent/lib/client')  # TODO: Use my abstracted api-req
 {Mixins, Paper} = require('material-ui')
 {StyleResizable} = Mixins
 
+rawTheme = require('../../../raw-theme')
 tipCalculator = require('./tipCalculator')
 request = require('../../../api-request')
 JSONStorage = require('../../../JSONStorage')

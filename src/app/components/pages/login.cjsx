@@ -7,7 +7,9 @@ _ = require('lodash')
 {StylePropable} = Mixins  # I think this is safe to have removed StyleResizable, but not sure
 {Spacing, Colors, Typography} = Styles
 ThemeManager = Styles.ThemeManager
-DefaultRawTheme = Styles.LightRawTheme
+# DefaultRawTheme = Styles.LightRawTheme
+
+rawTheme = require('../../raw-theme')
 
 FullWidthSection = require('../full-width-section')
 request = require('../../api-request')
@@ -19,7 +21,7 @@ module.exports = React.createClass(
   mixins: [StylePropable]  # I think it's safe to not StyleResizable here, but not sure what that does
 
   getInitialState: () ->
-    muiTheme = ThemeManager.getMuiTheme(DefaultRawTheme)
+    muiTheme = ThemeManager.getMuiTheme(rawTheme)
     return {
       message: ""
       buttonsDisabled: false
@@ -79,7 +81,7 @@ module.exports = React.createClass(
         color: Typography.textDarkBlack
       actions:
         margin: 10
-        color: DefaultRawTheme.palette.accent1Color
+        color: rawTheme.palette.accent1Color
 
     return styles
 
@@ -94,7 +96,7 @@ module.exports = React.createClass(
         contentStyle={styles.content}>
         <Card initiallyExpanded={true} expandable={false}>
           <CardHeader
-            subtitleStyle={color: DefaultRawTheme.palette.accent1Color}
+            subtitleStyle={color: rawTheme.palette.accent1Color}
             actAsExpander={true}
             title="Login"
             subtitle={@state.message}

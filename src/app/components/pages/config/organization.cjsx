@@ -6,8 +6,8 @@ _ = require('lodash')
   Card, CardHeader, CardText, CardActions} = require('material-ui')
 {StyleResizable} = Mixins
 {Spacing, Colors, Typography} = Styles
-DefaultRawTheme = Styles.LightRawTheme
 
+rawTheme = require('../../../raw-theme')
 request = require('../../../api-request')
 JSONStorage = require('../../../JSONStorage')
 
@@ -67,7 +67,7 @@ module.exports = React.createClass(
       <div>
         <Card initiallyExpanded={true}>
           <CardHeader
-            subtitleStyle={color: DefaultRawTheme.palette.accent1Color}
+            subtitleStyle={color: rawTheme.palette.accent1Color}
             actAsExpander={true}
             title="Organization"
             subtitle={@state.pageErrorText}
@@ -81,7 +81,7 @@ module.exports = React.createClass(
               onChange={@validateInput}
               onEnterKeyDown={@handleSave}
               errorText={@state.nameErrorText}
-              errorStyle={color: DefaultRawTheme.palette.accent1Color}
+              errorStyle={color: rawTheme.palette.accent1Color}
             />
           </CardText>
         </Card>

@@ -4,9 +4,10 @@ import {Mixins, RaisedButton, Styles} from 'material-ui';
 import HomeFeature from './home-feature';
 import FullWidthSection from '../full-width-section';
 
+import rawTheme from '../../raw-theme';
+
 const {StylePropable, StyleResizable} = Mixins;
 const {Colors, Spacing, Typography} = Styles;
-const DefaultRawTheme = Styles.LightRawTheme;
 
 const HomePage = React.createClass({
 
@@ -34,7 +35,7 @@ const HomePage = React.createClass({
   _getHomePageHero() {
     let styles = {
       root: {
-        backgroundColor: DefaultRawTheme.palette.primary1Color,
+        backgroundColor: rawTheme.palette.primary1Color,
         overflow: 'hidden',
       },
       svgLogo: {
@@ -47,7 +48,7 @@ const HomePage = React.createClass({
         maxWidth: 575,
       },
       label: {
-        color: DefaultRawTheme.palette.primary1Color,
+        color: rawTheme.palette.primary1Color,
       },
       githubStyle: {
         margin: '16px 32px 0px 8px',

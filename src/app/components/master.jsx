@@ -13,23 +13,15 @@ import JSONStorage from '../JSONStorage';
 import history from '../history';
 import request from '../api-request';
 
+import rawTheme from '../raw-theme';
+const ThemeManager = Styles.ThemeManager;
+
 const {StylePropable} = Mixins;
 const {Colors, Spacing, Typography} = Styles;
-const ThemeManager = Styles.ThemeManager;
-const DefaultRawTheme = Styles.LightRawTheme;
 
 
 const Master = React.createClass({
   mixins: [StylePropable],
-
-  getInitialState() {
-    let muiTheme = ThemeManager.getMuiTheme(DefaultRawTheme);
-    // To switch to RTL...
-    // muiTheme.isRtl = true;
-    return {
-      muiTheme,
-    };
-  },
 
   propTypes: {
     children: React.PropTypes.node,
@@ -37,13 +29,25 @@ const Master = React.createClass({
     location: React.PropTypes.object,
   },
 
+  getInitialState() {
+    let muiTheme = ThemeManager.getMuiTheme(rawTheme);
+    // To switch to RTL...
+    // muiTheme.isRtl = true;
+    return {
+      muiTheme,
+      rawTheme,
+    };
+  },
+
   childContextTypes : {
     muiTheme: React.PropTypes.object,
+    rawTheme: React.PropTypes.object,
   },
 
   getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
+      rawTheme: this.state.rawTheme,
     };
   },
 
@@ -79,9 +83,11 @@ const Master = React.createClass({
 
   componentWillMount() {
     let newMuiTheme = this.state.muiTheme;
+    let newRawTheme = this.state.rawTheme;
     newMuiTheme.inkBar.backgroundColor = Colors.yellow200;
     this.setState({
       muiTheme: newMuiTheme,
+      rawTheme: newRawTheme,
       tabIndex: this._getSelectedIndex()});
     let setTabsState = function() {
       this.setState({renderTabs: !(document.body.clientWidth <= 647)});
@@ -92,9 +98,11 @@ const Master = React.createClass({
 
   componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
+    let newRawTheme = nextContext.rawTheme ? nextContext.rawTheme : this.state.rawTheme;
     this.setState({
       tabIndex: this._getSelectedIndex(),
       muiTheme: newMuiTheme,
+      rawTheme: newRawTheme,
     });
   },
 
@@ -124,7 +132,7 @@ const Master = React.createClass({
   _getTabs() {
     let styles = {
       root: {
-        backgroundColor: DefaultRawTheme.palette.primary1Color,
+        backgroundColor: rawTheme.palette.primary1Color,
         position: 'fixed',
         height: 64,
         top: 0,
@@ -152,7 +160,7 @@ const Master = React.createClass({
       },
       svgLogo: {
         width: 65,
-        backgroundColor: DefaultRawTheme.palette.primary1Color,
+        backgroundColor: rawTheme.palette.primary1Color,
         position: 'absolute',
         top: 22,
       },
@@ -188,8 +196,8 @@ const Master = React.createClass({
         href="/#/home">
         <FontIcon
           className="muidocs-icon-action-home"
-          color={DefaultRawTheme.palette.alternateTextColor}
-          hoverColor={DefaultRawTheme.palette.accent3Color}
+          color={rawTheme.palette.alternateTextColor}
+          hoverColor={rawTheme.palette.accent3Color}
           style={this.prepareStyles(styles.svgLogo)} />
         <span style={this.prepareStyles(styles.span)}>Lumenize</span>
       </EnhancedButton>
