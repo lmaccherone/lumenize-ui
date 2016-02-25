@@ -73,14 +73,14 @@ var config = {
   },
   module: {
         //eslint loader
-        preLoaders: [
-          {
-            test: /\.(js|jsx)$/,
-            loader: 'eslint-loader',
-            include: [path.resolve(__dirname, "../src")],
-            exclude: [path.resolve(__dirname, "../src/svg-icons"), path.resolve(__dirname, "../src/utils/modernizr.custom.js")]
-          }
-        ],
+        // preLoaders: [
+        //   {
+        //     test: /\.(js|jsx)$/,
+        //     loader: 'eslint-loader',
+        //     include: [path.resolve(__dirname, "../src")],
+        //     exclude: [path.resolve(__dirname, "../src/svg-icons"), path.resolve(__dirname, "../src/utils/modernizr.custom.js")]
+        //   }
+        // ],
         //Allow loading of non-es5 js files.
         loaders: [
           {
@@ -118,9 +118,9 @@ var config = {
           //},
         ]
   },
-  eslint: {
-    configFile: '../.eslintrc'
-  }
+  // eslint: {
+  //   configFile: '../.eslintrc'
+  // }
 };
 
 module.exports = config;
